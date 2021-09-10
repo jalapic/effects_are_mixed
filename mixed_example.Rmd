@@ -64,12 +64,12 @@ ifelse(df$sex=="M",
 #sex * lg * early * post
 df$of_inner <-
 runif(60, 300, 400) + 
-  (as.numeric(df$dam_id)+18) * runif(60,0,2) +
-  ((as.numeric(df$dam_id)-25) * runif(60,0,1)) +
-  as.numeric(df$sex)*runif(60,40,60) + 
-  (df$dam_lg*3.5) + 
-  (as.numeric(df$early) * -10 * runif(60,5,15)) +
-  (as.numeric(df$post) * -12 * runif(60,1,8))
+  (as.numeric(as.factor(df$dam_id))+18) * runif(60,0,2) +
+  ((as.numeric(as.factor(df$dam_id))-25) * runif(60,0,1)) +
+  as.numeric(as.factor(df$sex))*runif(60,40,60) + 
+  (as.numeric(as.factor(df$dam_lg))*3.5) + 
+  (as.numeric(as.factor(df$early)) * -10 * runif(60,5,15)) +
+  (as.numeric(as.factor(df$post)) * -12 * runif(60,1,8))
   
 df$of_inner[df$of_inner<0] <- 0 
 
@@ -77,8 +77,8 @@ df$of_inner[df$of_inner<0] <- 0
 # post
 df$freezing <- 
   runif(60, 0, 20) + 
-  ((as.numeric(df$dam_id)-18) * runif(60,0,1)) +
-  (as.numeric(df$post) * 3.5 * runif(60,2.5,2.8))
+  ((as.numeric(as.factor(df$dam_id))-18) * runif(60,0,1)) +
+  (as.numeric(as.factor(df$post)) * 3.5 * runif(60,2.5,2.8))
 
 
 
@@ -88,9 +88,9 @@ df$freezing <-
 
 df$sociability <-
   runif(60, 260, 320) +
-   (as.numeric(df$dam_id) * runif(60,-1,2))+
-  ((as.numeric(df$early) * -10 * runif(60,5,6.5))) +
-  ((as.numeric(df$post) * -12 * runif(60,1,4.8)))
+   (as.numeric(as.factor(df$dam_id)) * runif(60,-1,2))+
+  ((as.numeric(as.factor(df$early)) * -10 * runif(60,5,6.5))) +
+  ((as.numeric(as.factor(df$post)) * -12 * runif(60,1,4.8)))
 
 
 
@@ -104,9 +104,9 @@ df$protein1 <-
     abs(
     runif(60, 0, 4) +
       (as.numeric(df$dam_id) * runif(60,0,0.5)) +
-  ((as.numeric(df$sex) * -1 * runif(60,1,1.5))) +
-  ((as.numeric(df$early) * -1.2 * runif(60,1,4.8))) +
-  ((as.numeric(df$wean) * 0.2 * runif(60,0,1.1)))
+  ((as.numeric(as.factor(df$sex)) * -1 * runif(60,1,1.5))) +
+  ((as.numeric(as.factor(df$early)) * -1.2 * runif(60,1,4.8))) +
+  ((as.numeric(as.factor(df$wean)) * 0.2 * runif(60,0,1.1)))
   ),1)
 
 
@@ -118,10 +118,10 @@ df$protein2 <-
   round(
     abs(
       runif(60, 0, 6) +
-        (as.numeric(df$dam_id) * runif(60,0,0.5)) +
-        ((as.numeric(df$dam_id)+12) * runif(60,0,0.2)) +
-        ((as.numeric(df$early) * 3.1 * runif(60,1,1.8))) +
-        ((as.numeric(df$post) * 1.3 * runif(60,0,3.1)))
+        (as.numeric(as.factor(df$dam_id)) * runif(60,0,0.5)) +
+        ((as.numeric(as.factor(df$dam_id))+12) * runif(60,0,0.2)) +
+        ((as.numeric(as.factor(df$early)) * 3.1 * runif(60,1,1.8))) +
+        ((as.numeric(as.factor(df$post)) * 1.3 * runif(60,0,3.1)))
     ),1)
 
 ```
